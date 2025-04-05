@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pump It!</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Welcome Screen -->
+    <div id="welcome-screen" class="screen">
+        <h1 class="game-title">Pump It!</h1>
+        <div class="balloon-showcase">
+            <!-- SVG Balloons for welcome screen -->
+            <svg class="balloon-svg red" viewBox="0 0 100 160">
+                <path d="M50,10 C20,30 10,60 10,90 C10,130 90,130 90,90 C90,60 80,30 50,10" />
+                <path class="string" d="M50,130 Q48,140 46,150" />
+            </svg>
+            
+            <svg class="balloon-svg blue" viewBox="0 0 100 160">
+                <path d="M50,10 C20,30 10,60 10,90 C10,130 90,130 90,90 C90,60 80,30 50,10" />
+                <path class="string" d="M50,130 Q48,140 46,150" />
+            </svg>
+            
+            <svg class="balloon-svg green" viewBox="0 0 100 160">
+                <path d="M50,10 C20,30 10,60 10,90 C10,130 90,130 90,90 C90,60 80,30 50,10" />
+                <path class="string" d="M50,130 Q48,140 46,150" />
+            </svg>
+        </div>
+        
+        <div class="instructions">
+            <h2>How to Play:</h2>
+            <p>You'll be presented with a series of balloons, one at a time.</p>
+            <p>For each balloon, you have two choices:</p>
+            <ul>
+                <li><strong>Pump:</strong> Increases the balloon size and adds points (5 points per pump).</li>
+                <li><strong>Cash Out:</strong> Banks your current points and moves to the next balloon.</li>
+            </ul>
+            <p>Be careful! If you pump too much, the balloon will pop and you'll lose points for that balloon.</p>
+            <p><strong>Important:</strong> Different colored balloons have different capacities. Pay attention to the colors and adapt your strategy accordingly!</p>
+        </div>
+        <button id="start-button" class="action-button">Start Game</button>
+    </div>
+
+    <!-- Game Screen -->
+    <div id="game-screen" class="screen hidden">
+        <div class="corner-logo">Pump It!</div>
+        <div class="game-header">
+            <div class="balloon-count">Balloon <span id="current-balloon">1</span> of <span id="total-balloons">15</span></div>
+            <div class="score-display">Total Score: <span id="total-score">0</span></div>
+        </div>
+
+        <div class="balloon-area">
+            <!-- Main game balloon SVG -->
+            <svg id="game-balloon" class="balloon-svg" viewBox="0 0 100 160">
+                <path d="M50,10 C20,30 10,60 10,90 C10,130 90,130 90,90 C90,60 80,30 50,10" />
+                <path class="string" d="M50,130 Q48,140 46,150" />
+            </svg>
+            <div id="pop-effect" class="pop-effect hidden">POP!</div>
+        </div>
+
+        <div class="current-points">Current Points: <span id="current-points">0</span></div>
+
+        <div class="action-buttons">
+            <button id="pump-button" class="action-button">Pump</button>
+            <button id="cash-button" class="action-button">Cash Out</button>
+        </div>
+    </div>
+
+    <!-- Results Screen -->
+    <div id="results-screen" class="screen hidden">
+        <h1 class="game-title">Pump It!</h1>
+        <div class="final-score">Final Score: <span id="final-score">0</span></div>
+
+        <div class="stats-container">
+            <h2>Your Performance:</h2>
+            <div class="overall-stats">
+                <h3>Overall</h3>
+                <div>Success Rate: <span id="overall-success-rate">0%</span></div>
+                <div>Average Pumps: <span id="overall-avg-pumps">0</span></div>
+            </div>
+
+            <div class="color-stats">
+                <div class="color-stat red-bg">
+                    <div class="color-label">Red Balloons (<span class="risk-label" data-color="red">?</span> Risk)</div>
+                    <div>Success Rate: <span id="red-success-rate">0%</span></div>
+                    <div>Average Pumps: <span id="red-avg-pumps">0</span></div>
+                </div>
+                <div class="color-stat blue-bg">
+                    <div class="color-label">Blue Balloons (<span class="risk-label" data-color="blue">?</span> Risk)</div>
+                    <div>Success Rate: <span id="blue-success-rate">0%</span></div>
+                    <div>Average Pumps: <span id="blue-avg-pumps">0</span></div>
+                </div>
+                <div class="color-stat green-bg">
+                    <div class="color-label">Green Balloons (<span class="risk-label" data-color="green">?</span> Risk)</div>
+                    <div>Success Rate: <span id="green-success-rate">0%</span></div>
+                    <div>Average Pumps: <span id="green-avg-pumps">0</span></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="assessment">
+            <h2>Risk Assessment:</h2>
+            <p id="risk-assessment">Your risk-taking strategy will be analyzed based on how you adapted to different balloon colors.</p>
+        </div>
+
+        <button id="play-again-button" class="action-button">Play Again</button>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>

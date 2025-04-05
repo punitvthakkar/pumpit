@@ -1,0 +1,360 @@
+/* General Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', 'Arial', sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #7f7fd5, #86a8e7, #91eae4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.screen {
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    padding: 30px;
+    width: 100%;
+    max-width: 800px;
+    text-align: center;
+    transition: transform 0.3s, opacity 0.3s;
+}
+
+.hidden {
+    display: none;
+    opacity: 0;
+    transform: scale(0.95);
+}
+
+/* Game Title Styling */
+.game-title {
+    font-family: 'Bangers', cursive;
+    color: #ff4757;
+    font-size: 4.5rem;
+    text-shadow: 3px 3px 0 rgba(0,0,0,0.2);
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    transform: rotate(-2deg);
+    display: inline-block;
+}
+
+.corner-logo {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-family: 'Bangers', cursive;
+    color: #ff4757;
+    font-size: 1.2rem;
+    transform: rotate(-5deg);
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.2);
+    background: rgba(255,255,255,0.8);
+    padding: 3px 10px;
+    border-radius: 10px;
+    z-index: 10;
+}
+
+h1 {
+    color: #3d4852;
+    margin-bottom: 25px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+}
+
+h2 {
+    color: #3490dc;
+    margin: 15px 0;
+    font-weight: 700;
+}
+
+p, ul {
+    margin-bottom: 15px;
+    line-height: 1.6;
+    color: #606f7b;
+}
+
+ul {
+    text-align: left;
+    padding-left: 30px;
+    list-style-type: disc;
+}
+
+li {
+    margin-bottom: 5px;
+}
+
+.action-button {
+    background: linear-gradient(to right, #3490dc, #6574cd);
+    border: none;
+    border-radius: 30px;
+    color: white;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 14px 35px;
+    margin: 15px;
+    transition: all 0.2s;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.action-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.action-button:active {
+    transform: translateY(1px);
+}
+
+.action-button:disabled {
+    background: linear-gradient(to right, #b8c2cc, #dae1e7);
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* SVG Balloon Styles */
+.balloon-showcase {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    margin: 30px 0;
+}
+
+.balloon-svg {
+    width: 80px;
+    height: 120px;
+    transition: transform 0.2s ease;
+}
+
+.balloon-svg path:first-child {
+    stroke-width: 2;
+    stroke: rgba(0, 0, 0, 0.1);
+}
+
+.balloon-svg.red path:first-child {
+    fill: #f56565;
+}
+
+.balloon-svg.blue path:first-child {
+    fill: #3490dc;
+}
+
+.balloon-svg.green path:first-child {
+    fill: #38c172;
+}
+
+.balloon-svg .string {
+    stroke: #718096;
+    stroke-width: 2;
+    fill: none;
+}
+
+/* Welcome Screen */
+.instructions {
+    background-color: #f8fafc;
+    border-radius: 15px;
+    padding: 25px;
+    margin: 25px 0;
+    text-align: left;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+/* Game Screen */
+.game-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    font-size: 18px;
+}
+
+.balloon-count, .score-display {
+    background-color: #f8fafc;
+    border-radius: 10px;
+    padding: 12px 20px;
+    font-weight: bold;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.balloon-area {
+    position: relative;
+    height: 320px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30px 0;
+    perspective: 800px;
+}
+
+#game-balloon {
+    width: 150px;
+    height: 200px;
+    transform-origin: center bottom;
+    transform: scale(1) rotate(0deg);
+    transition: transform 0.15s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+}
+
+.pop-effect {
+    position: absolute;
+    color: #e53e3e;
+    font-size: 80px;
+    font-weight: 900;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    animation: popAnimation 0.4s forwards;
+    opacity: 0;
+}
+
+@keyframes popAnimation {
+    0% { transform: scale(0); opacity: 0; }
+    30% { transform: scale(1.5); opacity: 1; }
+    70% { transform: scale(1.2); opacity: 1; }
+    100% { transform: scale(0); opacity: 0; }
+}
+
+.current-points {
+    font-size: 28px;
+    font-weight: bold;
+    margin: 25px 0;
+    color: #3d4852;
+}
+
+.action-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* Results Screen */
+.final-score {
+    font-size: 36px;
+    font-weight: 800;
+    color: #3d4852;
+    margin: 25px 0;
+    background: linear-gradient(to right, #f8fafc, #edf2f7);
+    border-radius: 15px;
+    padding: 15px 30px;
+    display: inline-block;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.stats-container {
+    margin: 30px 0;
+}
+
+.overall-stats {
+    background-color: #f8fafc;
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.color-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+}
+
+.color-stat {
+    flex: 1;
+    min-width: 200px;
+    border-radius: 15px;
+    padding: 18px;
+    color: white;
+    text-align: left;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.color-stat:hover {
+    transform: translateY(-5px);
+}
+
+.color-stat div {
+    margin-bottom: 6px;
+}
+
+.red-bg {
+    background: linear-gradient(to right bottom, #f56565, #e53e3e);
+}
+
+.blue-bg {
+    background: linear-gradient(to right bottom, #3490dc, #2779bd);
+}
+
+.green-bg {
+    background: linear-gradient(to right bottom, #38c172, #2f9e5a);
+}
+
+.color-label {
+    font-weight: bold;
+    margin-bottom: 12px;
+    font-size: 1.1em;
+    text-align: center;
+}
+
+.assessment {
+    background-color: #f8fafc;
+    border-radius: 15px;
+    padding: 25px;
+    margin: 25px 0;
+    text-align: left;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.assessment h2 {
+    text-align: center;
+}
+
+/* Animation for Pump Effect */
+@keyframes pumpEffect {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* Cash Effect */
+@keyframes cashEffect {
+    0% { transform: scale(1); }
+    50% { transform: scale(0.95) rotate(-2deg); }
+    100% { transform: scale(1); }
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 600px) {
+    .color-stats {
+        flex-direction: column;
+    }
+    .color-stat {
+        min-width: 90%;
+    }
+    .screen {
+        padding: 20px;
+    }
+    h1 {
+        font-size: 1.8em;
+    }
+    .final-score {
+        font-size: 28px;
+    }
+    .action-button {
+        font-size: 16px;
+        padding: 12px 25px;
+    }
+    .game-header {
+        font-size: 16px;
+    }
+    .balloon-showcase {
+        gap: 20px;
+    }
+    .balloon-svg {
+        width: 60px;
+        height: 90px;
+    }
+}
